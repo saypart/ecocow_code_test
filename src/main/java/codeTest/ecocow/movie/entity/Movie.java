@@ -1,0 +1,45 @@
+package codeTest.ecocow.movie.entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+
+@Getter
+@Builder(toBuilder = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+
+public class Movie {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long movieId;
+
+//    @Column(nullable = false)
+    private String title;
+
+    private String original_title; //원제
+    private String original_language; //원어
+    private LocalDateTime screening_date; //상영일
+    private int member_score;  //회원 점수
+    private String one_line_summary;// 한줄요약
+    private String outline; //개요
+    private Long production_cost;  //제작비
+    private Long profits;  // 수익
+    private int running_time;  //상영시간
+
+
+    private MovieStatus movieStatus = MovieStatus.Before_release; //상태  기본값 개봉전으로 설정하기
+
+    private Long keyword;
+    // 영화 -> 장르 -> 1:N  @OneToMany  사용필요
+    private Long movie_genre; //장르
+    // 영화 -> 감독 및 배우 -> 1:N  @OneToMany  사용필요
+    private Long related_person;
+
+}
