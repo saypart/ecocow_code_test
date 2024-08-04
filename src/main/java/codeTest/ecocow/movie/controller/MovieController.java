@@ -2,18 +2,15 @@ package codeTest.ecocow.movie.controller;
 
 import codeTest.ecocow.movie.dto.MoviePatchDto;
 import codeTest.ecocow.movie.dto.MoviePostDto;
-import codeTest.ecocow.movie.dto.MovieResponseDto;
 import codeTest.ecocow.movie.entity.Movie;
 import codeTest.ecocow.movie.mapper.MovieMapper;
 import codeTest.ecocow.movie.service.MovieService;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/movie")
@@ -70,8 +67,8 @@ public class MovieController {
     }
 
 
-    @DeleteMapping("/{movie-id}")
-    public ResponseEntity deleteMember(@PathVariable("movie-id") long movieId) {
+    @DeleteMapping("/{movieId}")
+    public ResponseEntity deleteMovie(@PathVariable("movieId") long movieId) {
         movieService.deleteMovie(movieId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
