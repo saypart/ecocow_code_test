@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Getter
@@ -33,12 +34,16 @@ public class Movie {
     private Long profits;  // 수익
     private int running_time;  //상영시간
 
+    private MovieStatus movieStatus; // 영화 개봉 상태
 
-    private MovieStatus movieStatus = MovieStatus.Before_release; //상태  기본값 개봉전으로 설정하기
+    @ElementCollection(targetClass = MovieGenre.class)
+    @Enumerated(EnumType.STRING)  // Enum을 문자열로 저장
+    @CollectionTable(name = "movie_genres", joinColumns = @JoinColumn(name = "movie_id"))
+    @Column(name = "genre")
+    private List<MovieGenre> genres;
 
     private Long keyword;
-    // 영화 -> 장르 -> 1:N  @OneToMany  사용필요
-    private Long movie_genre; //장르
+
     // 영화 -> 감독 및 배우 -> 1:N  @OneToMany  사용필요
     private Long related_person;
 

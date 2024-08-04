@@ -1,11 +1,12 @@
 package codeTest.ecocow.movie.dto;
 
-import codeTest.ecocow.movie.entity.Movie;
+import codeTest.ecocow.movie.entity.MovieGenre;
 import codeTest.ecocow.movie.entity.MovieStatus;
 import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Builder
@@ -25,11 +26,9 @@ public class MoviePatchDto {
 
     private MovieStatus movieStatus;
     private Long keyword;
-    // 영화 -> 장르 -> 1:N  @OneToMany  사용필요
-    private Long movie_genre; //장르
+    private List<MovieGenre> genres;
     // 영화 -> 감독 및 배우 -> 1:N  @OneToMany  사용필요
     private Long related_person;
 
-//    public void setMovie_Id(long movieId){this.movieId = movieId;}
 
 }

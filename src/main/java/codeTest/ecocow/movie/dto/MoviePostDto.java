@@ -1,10 +1,12 @@
 package codeTest.ecocow.movie.dto;
 
+import codeTest.ecocow.movie.entity.MovieGenre;
 import codeTest.ecocow.movie.entity.MovieStatus;
 import lombok.Getter;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 public class MoviePostDto {
@@ -21,9 +23,10 @@ public class MoviePostDto {
     private Long profits;  // 수익
     private int running_time;  //상영시간
     private MovieStatus movieStatus = MovieStatus.Before_release; //상태  기본값 개봉전으로 설정하기
+    private List<MovieGenre> genres;
+
     private Long keyword;
-    // 영화 -> 장르 -> 1:N  @OneToMany  사용필요
-    private Long movie_genre; //장르
+
     // 영화 -> 감독 및 배우 -> 1:N  @OneToMany  사용필요
     private Long related_person;
 

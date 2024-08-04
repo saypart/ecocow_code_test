@@ -14,4 +14,6 @@ public interface MovieMapper {
     @Mapping(target = "movieId")
     Movie moviePatchDtoToMovie(MoviePatchDto moviePatchDto);
     Movie movieToMovieResponseDto(Movie movie);
+
+
 }

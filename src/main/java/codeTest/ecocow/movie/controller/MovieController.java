@@ -59,7 +59,7 @@ public class MovieController {
                 .running_time(moviePatchDto.getRunning_time())
                 .movieStatus(moviePatchDto.getMovieStatus())
                 .keyword(moviePatchDto.getKeyword())
-                .movie_genre(moviePatchDto.getMovie_genre())
+                .genres(moviePatchDto.getGenres())
                 .related_person(moviePatchDto.getRelated_person())
                 .build();
 

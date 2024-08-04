@@ -54,7 +54,7 @@ public class MovieService {
                 .running_time(Optional.ofNullable(movie.getRunning_time()).orElse(findMovie.getRunning_time()))
                 .movieStatus(Optional.ofNullable(movie.getMovieStatus()).orElse(findMovie.getMovieStatus()))
                 .keyword(Optional.ofNullable(movie.getKeyword()).orElse(findMovie.getKeyword()))
-                .movie_genre(Optional.ofNullable(movie.getMovie_genre()).orElse(findMovie.getMovie_genre()))
+                .genres(Optional.ofNullable(movie.getGenres()).orElse(findMovie.getGenres()))
                 .related_person(Optional.ofNullable(movie.getRelated_person()).orElse(findMovie.getRelated_person()))
                 .build();
 
