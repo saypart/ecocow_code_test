@@ -16,8 +16,8 @@ import javax.validation.Valid;
 @RequestMapping("/movie")
 @AllArgsConstructor
 public class MovieController {
-    private MovieService movieService;
-    private MovieMapper movieMapper;
+    final MovieService movieService;
+    final MovieMapper movieMapper;
 
     //post
     @PostMapping("/add")

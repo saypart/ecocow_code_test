@@ -1,5 +1,6 @@
 package codeTest.ecocow.movie.entity;
 
+import codeTest.ecocow.participationList.ParticipationList;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -47,4 +48,20 @@ public class Movie {
     // 영화 -> 감독 및 배우 -> 1:N  @OneToMany  사용필요
     private Long related_person;
 
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ParticipationList> participationLists; // 참여 목록
+
+
+
+    public Long getMovieId() {
+        return movieId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setMovieId(Long movieId) {
+        this.movieId = movieId;
+    }
 }

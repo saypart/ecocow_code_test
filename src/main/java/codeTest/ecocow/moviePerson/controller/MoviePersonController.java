@@ -18,8 +18,8 @@ import javax.validation.Valid;
 @AllArgsConstructor
 public class MoviePersonController {
 
-    private MoviePersonService moviePersonService;
-    private MoviePersonMapper moviePersonMapper;
+    final MoviePersonService moviePersonService;
+    final MoviePersonMapper moviePersonMapper;
 
     @PostMapping("/add")
     public ResponseEntity postMoviePerson(@Valid @RequestBody MoviePersonPostDto moviePersonPostDto) {

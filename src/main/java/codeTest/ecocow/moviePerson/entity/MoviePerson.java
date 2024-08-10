@@ -1,5 +1,6 @@
 package codeTest.ecocow.moviePerson.entity;
 
+import codeTest.ecocow.participationList.ParticipationList;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,4 +38,19 @@ public class MoviePerson {
     @CollectionTable(name = "person_another_names", joinColumns = @JoinColumn(name = "person_id"))
     @Column(name = "another_name")
     private List<String> another_name;  // 다른 이름들
+
+    @OneToMany(mappedBy = "moviePerson", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ParticipationList> participationLists; //참여영화
+
+
+    public Long getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(Long personId) {
+        this.personId = personId;
+    }
+    public String getActivity_name() {
+        return activity_name;
+    }
 }

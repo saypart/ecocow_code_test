@@ -1,5 +1,7 @@
 package codeTest.ecocow.moviePerson.mapper;
 
+import codeTest.ecocow.movie.dto.MovieDto;
+import codeTest.ecocow.movie.entity.Movie;
 import codeTest.ecocow.moviePerson.dto.MoviePersonPatchDto;
 import codeTest.ecocow.moviePerson.dto.MoviePersonPostDto;
 import codeTest.ecocow.moviePerson.entity.MoviePerson;
@@ -13,4 +15,6 @@ public interface MoviePersonMapper {
     @Mapping(target = "personId")
     MoviePerson moviePersonPatchDtoToMoviePerson(MoviePersonPatchDto moviePersonPatchDto);
     MoviePerson moviePersonToMoviePersonResponseDto(MoviePerson moviePerson);
+
+    MovieDto movieToMovieDto(Movie movie);
 }

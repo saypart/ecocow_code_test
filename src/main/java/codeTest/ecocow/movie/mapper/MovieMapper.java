@@ -1,5 +1,6 @@
 package codeTest.ecocow.movie.mapper;
 
+import codeTest.ecocow.movie.dto.MovieDto;
 import codeTest.ecocow.movie.dto.MoviePatchDto;
 import codeTest.ecocow.movie.dto.MoviePostDto;
 import codeTest.ecocow.movie.entity.Movie;
@@ -13,6 +14,5 @@ public interface MovieMapper {
     @Mapping(target = "movieId")
     Movie moviePatchDtoToMovie(MoviePatchDto moviePatchDto);
     Movie movieToMovieResponseDto(Movie movie);
-
 
 }

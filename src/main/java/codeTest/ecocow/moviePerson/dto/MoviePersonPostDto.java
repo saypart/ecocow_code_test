@@ -1,5 +1,6 @@
 package codeTest.ecocow.moviePerson.dto;
 
+import codeTest.ecocow.movie.dto.MovieDto;
 import codeTest.ecocow.moviePerson.entity.Gender;
 import codeTest.ecocow.moviePerson.entity.Job;
 import lombok.Getter;
@@ -20,4 +21,6 @@ public class MoviePersonPostDto {
     private String participating_works; //참여작품
     private int document_score;  //문서점수
     private List<String> another_name;  // 다른 이름들
+
+    private List<MovieDto> movies;
 }
