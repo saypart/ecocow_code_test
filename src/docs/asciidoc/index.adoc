@@ -1,0 +1,25 @@
+= API Documentation
+:toc:
+:source-highlighter: pygments
+
+== Movie-Get API
+.curl-request
+include::{snippets}/get-movie/curl-request.adoc[]
+
+.http-response
+include::{snippets}/get-movie/http-response.adoc[]
+
+.httpie-request
+include::{snippets}/get-movie/httpie-request.adoc[]
+
+.request-body
+include::{snippets}/get-movie/request-body.adoc[]
+
+.request-fields
+include::{snippets}/get-movie/request-body.adoc[]
+
+.response-body
+include::{snippets}/get-movie/response-body.adoc[]
+
+.response-fields
+include::{snippets}/get-movie/response-fields.adoc[]

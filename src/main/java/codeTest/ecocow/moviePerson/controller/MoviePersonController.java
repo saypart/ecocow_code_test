@@ -49,7 +49,6 @@ public class MoviePersonController {
                 .jobs(moviePersonPatchDto.getJobs())
                 .birthday(moviePersonPatchDto.getBirthday())
                 .place_of_birth(moviePersonPatchDto.getPlace_of_birth())
-                .participating_works(moviePersonPatchDto.getParticipating_works())
                 .document_score(moviePersonPatchDto.getDocument_score())
                 .another_name(moviePersonPatchDto.getAnother_name())
                 .build();

@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id("org.springframework.boot") version "2.7.5"
 	id("io.spring.dependency-management") version "1.1.6"
+	id "org.asciidoctor.jvm.convert" version "3.3.2"  // 래스트 독스  adoc 파일을 변환하고 build 디렉토리에 복사하기 위해 사용하는 플러그인
 }
 
 group = "codeTest"
@@ -13,14 +14,46 @@ java {
 	}
 }
 
-/*
-configurations {
-	compileOnly {
-		extendsFrom(configurations.annotationProcessor.get())
-	}
-}
-*/
 
+configurations {
+	asciidoctorExtensions
+}
+
+ext {
+	snippetsDir = file("build/generated-snippets") //파일이 저장될 경로를 설정해준다
+}
+
+tasks.named('test') {
+	outputs.dir snippetsDir
+}
+
+asciidoctor {
+	configurations 'asciidoctorExtensions' // asciidoctor에서 asciidoctorExt을 configurations로 사용하도록 설정한다.
+	baseDirFollowsSourceFile() //
+	inputs.dir snippetsDir // input 디렉토리를 설정해준다
+	dependsOn test // build시 test 후 asciidoctor를 진행하도록 설정해준다. (순서 설정)
+	doFirst {
+		delete file('build/docs/asciidoc')
+	}
+	attributes 'pdf-theme': 'pdf-theme.yml'
+
+}
+
+
+asciidoctor.doFirst {
+	delete file('src/main/resources/static/docs')  // (11) 중복을 막기 위해 새로운 문서를 생성할 때에는 전에 생성했던 문서들을 먼저 지워준다.
+}
+
+
+task copyDocument(type: Copy) { // (12)build/docs/asciidoc 디렉토리에 생성된 html 문서를 src/main/resources/static/docs 디렉토리에 복사해온다.
+	dependsOn asciidoctor
+	from file("build/docs/asciidoc")
+	into file("src/main/resources/static/docs")
+}
+
+test {
+	useJUnitPlatform()
+}
 
 repositories {
 	mavenCentral()
@@ -38,6 +71,15 @@ dependencies {
 	// 맵퍼 활용을 위한 추가
 	implementation 'org.mapstruct:mapstruct:1.5.3.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+	//레스트 독스 사용용
+	asciidoctorExtensions  'org.springframework.restdocs:spring-restdocs-asciidoctor'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+	testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+	implementation 'com.google.code.gson:gson' // JSON(JavaScript Object Notation) 형식의 데이터를 자바 객체로 변환하거나, 자바 객체를 Json 형식으로 변환하는 작업 시 별도의 Mapping 로직 구현없이 간편하게 처리
+	// Asciidoctor PDF 관련 의존성 추가
+//	asciidoctorPdf 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.19'
 }
 
 /*

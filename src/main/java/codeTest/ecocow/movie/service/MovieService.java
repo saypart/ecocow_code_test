@@ -54,7 +54,6 @@ public class MovieService {
                 .movieStatus(Optional.ofNullable(movie.getMovieStatus()).orElse(findMovie.getMovieStatus()))
                 .keyword(Optional.ofNullable(movie.getKeyword()).orElse(findMovie.getKeyword()))
                 .genres(Optional.ofNullable(movie.getGenres()).orElse(findMovie.getGenres()))
-                .related_person(Optional.ofNullable(movie.getRelated_person()).orElse(findMovie.getRelated_person()))
                 .build();
 
         return movieRepository.save(updatedMovie);

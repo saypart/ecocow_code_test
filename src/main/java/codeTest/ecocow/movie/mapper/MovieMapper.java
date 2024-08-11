@@ -3,6 +3,7 @@ package codeTest.ecocow.movie.mapper;
 import codeTest.ecocow.movie.dto.MovieDto;
 import codeTest.ecocow.movie.dto.MoviePatchDto;
 import codeTest.ecocow.movie.dto.MoviePostDto;
+import codeTest.ecocow.movie.dto.MovieResponseDto;
 import codeTest.ecocow.movie.entity.Movie;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -13,6 +14,6 @@ public interface MovieMapper {
     Movie moviePostDtoToMovie(MoviePostDto moviePostDto);
     @Mapping(target = "movieId")
     Movie moviePatchDtoToMovie(MoviePatchDto moviePatchDto);
-    Movie movieToMovieResponseDto(Movie movie);
+    MovieResponseDto movieToMovieResponseDto(Movie movie);
 
 }

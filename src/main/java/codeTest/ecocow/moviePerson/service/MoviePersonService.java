@@ -43,7 +43,6 @@ public class MoviePersonService {
                 .jobs(Optional.ofNullable(moviePerson.getJobs()).orElse(findMoviePerson.getJobs()))
                 .birthday(Optional.ofNullable(moviePerson.getBirthday()).orElse(findMoviePerson.getBirthday()))
                 .place_of_birth(Optional.ofNullable(moviePerson.getPlace_of_birth()).orElse(findMoviePerson.getPlace_of_birth()))
-                .participating_works(Optional.ofNullable(moviePerson.getParticipating_works()).orElse(findMoviePerson.getParticipating_works()))
                 .document_score(Optional.ofNullable(moviePerson.getDocument_score()).orElse(findMoviePerson.getDocument_score()))
                 .another_name(Optional.ofNullable(moviePerson.getAnother_name()).orElse(findMoviePerson.getAnother_name()))
                 .build();

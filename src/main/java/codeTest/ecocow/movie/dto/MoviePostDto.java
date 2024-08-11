@@ -2,6 +2,8 @@ package codeTest.ecocow.movie.dto;
 
 import codeTest.ecocow.movie.entity.MovieGenre;
 import codeTest.ecocow.movie.entity.MovieStatus;
+import codeTest.ecocow.participationList.ParticipationList;
+import lombok.Builder;
 import lombok.Getter;
 
 import javax.validation.constraints.NotNull;
@@ -9,6 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
+@Builder
 public class MoviePostDto {
     @NotNull(message = "이름은 Null 일 수 없습니다!")
     private String title;
@@ -26,8 +29,4 @@ public class MoviePostDto {
     private List<MovieGenre> genres;
 
     private Long keyword;
-
-    // 영화 -> 감독 및 배우 -> 1:N  @OneToMany  사용필요
-    private Long related_person;
-
 }

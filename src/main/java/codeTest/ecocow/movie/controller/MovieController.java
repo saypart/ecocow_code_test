@@ -16,8 +16,8 @@ import javax.validation.Valid;
 @RequestMapping("/movie")
 @AllArgsConstructor
 public class MovieController {
-    final MovieService movieService;
-    final MovieMapper movieMapper;
+    private final MovieService movieService;
+    private final MovieMapper movieMapper;
 
     //post
     @PostMapping("/add")
@@ -33,7 +33,6 @@ public class MovieController {
     @GetMapping("/{movieId}")
     public ResponseEntity getMovie(@PathVariable("movieId") long movieId) {
         Movie movie = movieService.findMovie(movieId);
-
         return new ResponseEntity<>(movieMapper.movieToMovieResponseDto(movie), HttpStatus.OK);
     }
 
@@ -57,7 +56,6 @@ public class MovieController {
                 .movieStatus(moviePatchDto.getMovieStatus())
                 .keyword(moviePatchDto.getKeyword())
                 .genres(moviePatchDto.getGenres())
-                .related_person(moviePatchDto.getRelated_person())
                 .build();
 
         Movie movie = movieService.updateMovie(movieMapper.moviePatchDtoToMovie(moviePatchDto));

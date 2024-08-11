@@ -19,7 +19,6 @@ public class MoviePersonResponseDto {
     private List<Job> jobs; //직업
     private LocalDateTime birthday; //출생일
     private String place_of_birth;// 출생지
-    private String participating_works; //참여작품
     private int document_score;  //문서점수
     private List<String> another_name;  // 다른 이름들
 }

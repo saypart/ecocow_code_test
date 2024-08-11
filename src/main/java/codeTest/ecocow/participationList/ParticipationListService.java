@@ -6,25 +6,19 @@ import codeTest.ecocow.movie.entity.Movie;
 import codeTest.ecocow.movie.repository.MovieRepository;
 import codeTest.ecocow.moviePerson.entity.MoviePerson;
 import codeTest.ecocow.moviePerson.repository.MoviePersonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class ParticipationListService {
 
-    @Autowired
-    private ParticipationListRepository participationListRepository;
-
-    @Autowired
-    private MovieRepository movieRepository;
-
-    @Autowired
-    private MoviePersonRepository moviePersonRepository;
-
-    @Autowired
-    private ParticipationListMapper participationListMapper;
+    private final ParticipationListRepository participationListRepository;
+    private final MovieRepository movieRepository;
+    private final MoviePersonRepository moviePersonRepository;
+    private final ParticipationListMapper participationListMapper;
 
 
     //영화인물참여관계 생성
